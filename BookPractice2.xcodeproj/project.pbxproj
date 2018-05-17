@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED6A981020AD454300CD227E /* SCoreAudioError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6A980F20AD454300CD227E /* SCoreAudioError.swift */; };
 		EDD321AB20A7B5190038F518 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD321AA20A7B5190038F518 /* main.swift */; };
+		EDD321B220A7E7920038F518 /* NotesGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD321B120A7E7920038F518 /* NotesGenerator.swift */; };
+		EDD321B420A7E8DA0038F518 /* ScaleMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD321B320A7E8DA0038F518 /* ScaleMaker.swift */; };
+		EDD321BC20A7FFB60038F518 /* ScaleMakerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD321BB20A7FFB60038F518 /* ScaleMakerTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,12 +27,25 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		ED6A980F20AD454300CD227E /* SCoreAudioError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCoreAudioError.swift; sourceTree = "<group>"; };
 		EDD321A720A7B5190038F518 /* BookPractice2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BookPractice2; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDD321AA20A7B5190038F518 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		EDD321B120A7E7920038F518 /* NotesGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesGenerator.swift; sourceTree = "<group>"; };
+		EDD321B320A7E8DA0038F518 /* ScaleMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleMaker.swift; sourceTree = "<group>"; };
+		EDD321B920A7FFB60038F518 /* ScaleMakerTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScaleMakerTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDD321BB20A7FFB60038F518 /* ScaleMakerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleMakerTest.swift; sourceTree = "<group>"; };
+		EDD321BD20A7FFB60038F518 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		EDD321A420A7B5190038F518 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDD321B620A7FFB60038F518 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				EDD321A920A7B5190038F518 /* BookPractice2 */,
+				EDD321BA20A7FFB60038F518 /* ScaleMakerTest */,
 				EDD321A820A7B5190038F518 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				EDD321A720A7B5190038F518 /* BookPractice2 */,
+				EDD321B920A7FFB60038F518 /* ScaleMakerTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,8 +77,20 @@
 			isa = PBXGroup;
 			children = (
 				EDD321AA20A7B5190038F518 /* main.swift */,
+				EDD321B120A7E7920038F518 /* NotesGenerator.swift */,
+				EDD321B320A7E8DA0038F518 /* ScaleMaker.swift */,
+				ED6A980F20AD454300CD227E /* SCoreAudioError.swift */,
 			);
 			path = BookPractice2;
+			sourceTree = "<group>";
+		};
+		EDD321BA20A7FFB60038F518 /* ScaleMakerTest */ = {
+			isa = PBXGroup;
+			children = (
+				EDD321BB20A7FFB60038F518 /* ScaleMakerTest.swift */,
+				EDD321BD20A7FFB60038F518 /* Info.plist */,
+			);
+			path = ScaleMakerTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -82,6 +113,23 @@
 			productReference = EDD321A720A7B5190038F518 /* BookPractice2 */;
 			productType = "com.apple.product-type.tool";
 		};
+		EDD321B820A7FFB60038F518 /* ScaleMakerTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDD321BE20A7FFB60038F518 /* Build configuration list for PBXNativeTarget "ScaleMakerTest" */;
+			buildPhases = (
+				EDD321B520A7FFB60038F518 /* Sources */,
+				EDD321B620A7FFB60038F518 /* Frameworks */,
+				EDD321B720A7FFB60038F518 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ScaleMakerTest;
+			productName = ScaleMakerTest;
+			productReference = EDD321B920A7FFB60038F518 /* ScaleMakerTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -93,6 +141,10 @@
 				ORGANIZATIONNAME = Moi;
 				TargetAttributes = {
 					EDD321A620A7B5190038F518 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+					EDD321B820A7FFB60038F518 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
 					};
@@ -111,9 +163,20 @@
 			projectRoot = "";
 			targets = (
 				EDD321A620A7B5190038F518 /* BookPractice2 */,
+				EDD321B820A7FFB60038F518 /* ScaleMakerTest */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EDD321B720A7FFB60038F518 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EDD321A320A7B5190038F518 /* Sources */ = {
@@ -121,6 +184,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDD321AB20A7B5190038F518 /* main.swift in Sources */,
+				ED6A981020AD454300CD227E /* SCoreAudioError.swift in Sources */,
+				EDD321B420A7E8DA0038F518 /* ScaleMaker.swift in Sources */,
+				EDD321B220A7E7920038F518 /* NotesGenerator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EDD321B520A7FFB60038F518 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDD321BC20A7FFB60038F518 /* ScaleMakerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +325,32 @@
 			};
 			name = Release;
 		};
+		EDD321BF20A7FFB60038F518 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ScaleMakerTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Moises.ScaleMakerTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		EDD321C020A7FFB60038F518 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ScaleMakerTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Moises.ScaleMakerTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -268,6 +368,15 @@
 			buildConfigurations = (
 				EDD321AF20A7B5190038F518 /* Debug */,
 				EDD321B020A7B5190038F518 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDD321BE20A7FFB60038F518 /* Build configuration list for PBXNativeTarget "ScaleMakerTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDD321BF20A7FFB60038F518 /* Debug */,
+				EDD321C020A7FFB60038F518 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

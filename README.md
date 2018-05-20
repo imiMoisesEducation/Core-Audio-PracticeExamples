@@ -1,7 +1,7 @@
 # coreaudio-Practices
-A list of toy applications made with Core Audio, Practicing while reading the "Learning Core Audio" book by "Chris Adamson" and "Kevin Avila"\n
+A list of toy applications made with Core Audio, Practicing while reading the "Learning Core Audio" book by "Chris Adamson" and "Kevin Avila"
 
-By now There is three applications within\n
+By now There is three applications within
 
 1- A musical scale generator (frequency generator that writes its values in a file per bytes)
 

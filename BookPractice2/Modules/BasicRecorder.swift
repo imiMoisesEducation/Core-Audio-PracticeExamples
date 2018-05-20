@@ -13,9 +13,10 @@ import AudioToolbox
 fileprivate func myAQInputCallback(inUserData: UnsafeMutableRawPointer?, inQueue: AudioQueueRef, inBuffer: AudioQueueBufferRef, inStartTime: UnsafePointer<AudioTimeStamp>,inNumPackets: UInt32, inPacketDesc: UnsafePointer<AudioStreamPacketDescription>?){
     // Casting of User Info Pointer
     do{
-        guard var recorder = inUserData?.load(as: BasicRecorder.MyRecorder.self) else{
+        guard let recorder = inUserData?.assumingMemoryBound(to: BasicRecorder.MyRecorder.self) else{
             return
         }
+
         var inNumPackets = inNumPackets
         
         /*
@@ -29,12 +30,26 @@ fileprivate func myAQInputCallback(inUserData: UnsafeMutableRawPointer?, inQueue
              - A pointer to the audio data, which is the `inBuffer.pointee.mAudioData` pointer
          */
         try SCoreAudioError.check(status:
-            AudioFileWritePackets(recorder.recordFile!, false, inBuffer.pointee.mAudioDataByteSize, inPacketDesc, recorder.recordPacket, &inNumPackets, inBuffer.pointee.mAudioData)
+            AudioFileWritePackets(recorder.pointee.recordFile!, false, inBuffer.pointee.mAudioDataByteSize, inPacketDesc, recorder.pointee.recordPacket, &inNumPackets, inBuffer.pointee.mAudioData)
         )
         
         // Increment the packet index
-        recorder.recordPacket += Int64(inNumPackets)
+        recorder.pointee.recordPacket += Int64(inNumPackets)
+    
+        //Re-enqueuing a Used Buffer
+        if recorder.pointee.running{
+            
+            try SCoreAudioError.check(status: AudioQueueEnqueueBuffer(inQueue, inBuffer, 0, inPacketDesc))
+        }
     }catch{
+        if let fError = error as? SCoreAudioError{
+            switch fError{
+            case .audioFile_InvalidPacketOffset:
+                return
+            default:
+                break
+            }
+        }
         fatalError(error.localizedDescription)
     }
     
@@ -202,7 +217,8 @@ struct BasicRecorder{
             // Set up file
             
                 //Creating Audio File for Output
-            let myFileURL: CFURL = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, CFStringCreateWithCString(kCFAllocatorDefault, "output.caf" , kCFStringEncodingASCII), CFURLPathStyle.cfurlposixPathStyle, false)
+            //let myFileURL: CFURL = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, CFStringCreateWithCString(kCFAllocatorDefault, "output.caf" , kCFStringEncodingASCII), CFURLPathStyle.cfurlposixPathStyle, false)
+            let myFileURL = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("record-\(Date.init()).caf") as NSURL as CFURL
             try SCoreAudioError.check(status: AudioFileCreateWithURL(myFileURL, kAudioFileCAFType, &recordFormat, AudioFileFlags.eraseFile, &recorder.recordFile))
             
                 //Calling a convenience method to handle the magic cookie
@@ -251,7 +267,7 @@ struct BasicRecorder{
             exit(0)
 
         }catch{
-            
+            fatalError(error.localizedDescription)
         }
     }
 }

@@ -16,6 +16,8 @@ case "scaleoutput":
     app = ScaleMakerApp()
 case "typeDescriptor":
     app = TypeDescriptorApp()
+case "basicRecorder":
+    app = BasicRecorder()
     break
 default:
     break

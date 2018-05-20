@@ -40,10 +40,12 @@ enum SCoreAudioError:Error{
     case audioUnit_Initialized
     case audioUnit_InvalidOfflineRender
     case audioUnit_Unauthorized
+    case audioFile_UnsupportedDataFormat
     case unknownError
     
     init?(status: OSStatus){
         if status == 0 {return nil}
+        
         switch status {
         case kAUGraphErr_NodeNotFound:
             self = .graph_NodeNotFound
@@ -105,6 +107,8 @@ enum SCoreAudioError:Error{
             self = .audioUnit_InvalidOfflineRender
         case kAudioUnitErr_Unauthorized:
             self = .audioUnit_Unauthorized
+        case kAudioFileUnsupportedDataFormatError:
+            self = .audioFile_UnsupportedDataFormat
         default:
             self = .unknownError
         }
@@ -149,6 +153,7 @@ enum SCoreAudioError:Error{
         .graph_InvalidAudioUnit:"graph_InvalidAudioUnit",
         .graph_OutputNodeErr:"graph_OutputNodeErr",
         .graph_NodeNotFound:"graph_NodeNotFound",
+        .audioFile_UnsupportedDataFormat:"audioFile_UnsuportedDataFormat",
         .unknownError:"unknownError"
     ]
     

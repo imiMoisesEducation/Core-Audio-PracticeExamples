@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED45B6A920AE7EA900FBA84E /* AudioFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED45B6A820AE7EA900FBA84E /* AudioFile.swift */; };
+		ED45B6AB20AE965E00FBA84E /* ScaleMakerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED45B6AA20AE965E00FBA84E /* ScaleMakerApp.swift */; };
+		ED45B6AD20AE9A6F00FBA84E /* TypeDescriptorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED45B6AC20AE9A6F00FBA84E /* TypeDescriptorApp.swift */; };
 		ED6A981020AD454300CD227E /* SCoreAudioError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6A980F20AD454300CD227E /* SCoreAudioError.swift */; };
+		ED72032020B0C1E6006070A9 /* BasicPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED72031F20B0C1E6006070A9 /* BasicPlayback.swift */; };
+		ED72032220B0CB50006070A9 /* BasicRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED72032120B0CB50006070A9 /* BasicRecorder.swift */; };
 		EDD321AB20A7B5190038F518 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD321AA20A7B5190038F518 /* main.swift */; };
 		EDD321B220A7E7920038F518 /* NotesGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD321B120A7E7920038F518 /* NotesGenerator.swift */; };
 		EDD321B420A7E8DA0038F518 /* ScaleMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD321B320A7E8DA0038F518 /* ScaleMaker.swift */; };
@@ -27,7 +32,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		ED45B6A820AE7EA900FBA84E /* AudioFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFile.swift; sourceTree = "<group>"; };
+		ED45B6AA20AE965E00FBA84E /* ScaleMakerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleMakerApp.swift; sourceTree = "<group>"; };
+		ED45B6AC20AE9A6F00FBA84E /* TypeDescriptorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeDescriptorApp.swift; sourceTree = "<group>"; };
 		ED6A980F20AD454300CD227E /* SCoreAudioError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCoreAudioError.swift; sourceTree = "<group>"; };
+		ED72031F20B0C1E6006070A9 /* BasicPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicPlayback.swift; sourceTree = "<group>"; };
+		ED72032120B0CB50006070A9 /* BasicRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicRecorder.swift; sourceTree = "<group>"; };
 		EDD321A720A7B5190038F518 /* BookPractice2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BookPractice2; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDD321AA20A7B5190038F518 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		EDD321B120A7E7920038F518 /* NotesGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesGenerator.swift; sourceTree = "<group>"; };
@@ -55,6 +65,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED45B6AE20AE9CA800FBA84E /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				ED45B6AC20AE9A6F00FBA84E /* TypeDescriptorApp.swift */,
+				ED45B6AA20AE965E00FBA84E /* ScaleMakerApp.swift */,
+				ED72031F20B0C1E6006070A9 /* BasicPlayback.swift */,
+				ED72032120B0CB50006070A9 /* BasicRecorder.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		EDD3219E20A7B5190038F518 = {
 			isa = PBXGroup;
 			children = (
@@ -76,10 +97,12 @@
 		EDD321A920A7B5190038F518 /* BookPractice2 */ = {
 			isa = PBXGroup;
 			children = (
+				ED45B6AE20AE9CA800FBA84E /* Modules */,
 				EDD321AA20A7B5190038F518 /* main.swift */,
 				EDD321B120A7E7920038F518 /* NotesGenerator.swift */,
 				EDD321B320A7E8DA0038F518 /* ScaleMaker.swift */,
 				ED6A980F20AD454300CD227E /* SCoreAudioError.swift */,
+				ED45B6A820AE7EA900FBA84E /* AudioFile.swift */,
 			);
 			path = BookPractice2;
 			sourceTree = "<group>";
@@ -183,10 +206,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED45B6AD20AE9A6F00FBA84E /* TypeDescriptorApp.swift in Sources */,
+				ED72032220B0CB50006070A9 /* BasicRecorder.swift in Sources */,
 				EDD321AB20A7B5190038F518 /* main.swift in Sources */,
 				ED6A981020AD454300CD227E /* SCoreAudioError.swift in Sources */,
 				EDD321B420A7E8DA0038F518 /* ScaleMaker.swift in Sources */,
+				ED45B6AB20AE965E00FBA84E /* ScaleMakerApp.swift in Sources */,
 				EDD321B220A7E7920038F518 /* NotesGenerator.swift in Sources */,
+				ED45B6A920AE7EA900FBA84E /* AudioFile.swift in Sources */,
+				ED72032020B0C1E6006070A9 /* BasicPlayback.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

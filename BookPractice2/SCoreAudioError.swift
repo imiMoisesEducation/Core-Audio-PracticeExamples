@@ -193,8 +193,8 @@ enum SCoreAudioError:Error{
         
     }
     
-    static public func check(status:OSStatus) throws{
-        guard let error = SCoreAudioError.init(status: status) else{
+    static public func check(status:OSStatus, _ message: String? = nil) throws{
+        guard let error = SCoreAudioError.init(status: status, message: message) else{
             return
         }
         throw error

@@ -30,11 +30,11 @@ fileprivate func myAQInputCallback(inUserData: UnsafeMutableRawPointer?, inQueue
              - A pointer to the audio data, which is the `inBuffer.pointee.mAudioData` pointer
          */
         try SCoreAudioError.check(status:
-            AudioFileWritePackets(recorder.pointee.recordFile!, false, inBuffer.pointee.mAudioDataByteSize, inPacketDesc, recorder.pointee.recordPacket, &inNumPackets, inBuffer.pointee.mAudioData)
+            AudioFileWritePackets(recorder.pointee.recordFile!, false, inBuffer.pointee.mAudioDataByteSize, inPacketDesc, Int64(recorder.pointee.recordPacket), &inNumPackets, inBuffer.pointee.mAudioData)
         )
         
         // Increment the packet index
-        recorder.pointee.recordPacket += Int64(inNumPackets)
+        recorder.pointee.recordPacket += inNumPackets
     
         //Re-enqueuing a Used Buffer
         if recorder.pointee.running{
@@ -67,7 +67,7 @@ struct BasicRecorder{
     // Using info struct for recording audio queue callbacks
     struct MyRecorder{
         var recordFile: AudioFileID? = nil
-        var recordPacket: Int64 = 0
+        var recordPacket: UInt32 = 0
         var running: Bool = false
     }
 
@@ -228,9 +228,7 @@ struct BasicRecorder{
             
                 // If it were PCM, we could easily get the buffer size by multiplying the SampleRate * Number of Channels * bytes per channel * duration of the buffer
                 // When we use a non PCM type, we use a helper function (since the buffer size is variable)
-            
-            //let bufferByteSize: UInt32 = UInt32(recordFormat.mSampleRate) * recordFormat.mChannelsPerFrame * (recordFormat.mBitsPerChannel/8) * 1 //PCM
-            let bufferByteSize: UInt32 = try myComputeRecordBufferSize(format: &recordFormat, queue: queue!, seconds: 0.5) // NONPCM
+                let bufferByteSize: UInt32 = try myComputeRecordBufferSize(format: &recordFormat, queue: queue!, seconds: 0.5)
             
             
                 //Allocating and enqueuing buffers

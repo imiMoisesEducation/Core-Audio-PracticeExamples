@@ -18,6 +18,8 @@ case "typeDescriptor":
     app = TypeDescriptorApp()
 case "basicRecorder":
     app = BasicRecorder()
+case "basicPlayback":
+    app = BasicPlayback()
     break
 default:
     break

@@ -35,6 +35,7 @@
 		ED45B6A820AE7EA900FBA84E /* AudioFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFile.swift; sourceTree = "<group>"; };
 		ED45B6AA20AE965E00FBA84E /* ScaleMakerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleMakerApp.swift; sourceTree = "<group>"; };
 		ED45B6AC20AE9A6F00FBA84E /* TypeDescriptorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeDescriptorApp.swift; sourceTree = "<group>"; };
+		ED5C9BF420B679C60004CE30 /* Good CoreAudio Resources */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Good CoreAudio Resources"; sourceTree = "<group>"; };
 		ED6A980F20AD454300CD227E /* SCoreAudioError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCoreAudioError.swift; sourceTree = "<group>"; };
 		ED72031F20B0C1E6006070A9 /* BasicPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicPlayback.swift; sourceTree = "<group>"; };
 		ED72032120B0CB50006070A9 /* BasicRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicRecorder.swift; sourceTree = "<group>"; };
@@ -103,6 +104,7 @@
 				EDD321B320A7E8DA0038F518 /* ScaleMaker.swift */,
 				ED6A980F20AD454300CD227E /* SCoreAudioError.swift */,
 				ED45B6A820AE7EA900FBA84E /* AudioFile.swift */,
+				ED5C9BF420B679C60004CE30 /* Good CoreAudio Resources */,
 			);
 			path = BookPractice2;
 			sourceTree = "<group>";

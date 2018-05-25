@@ -21,11 +21,14 @@ private func myAQOutputCallback(inUserData:UnsafeMutableRawPointer?,inAQ: AudioQ
         }
         
         // Reading packets from audio file
-        var numBytes:UInt32 = 0
+        var numBytes:UInt32 = player.pointee.buffSize // THIS CAUSED ME A LOT OF PROBLEMS
         var nPackets = player.pointee.numPacketsToRead
         
-        try SCoreAudioError.check(status: AudioFileReadPacketData(player.pointee.playbackFile!, false, &numBytes, &player.pointee.packetDescs![0], player.pointee.packetPosition, &nPackets, inCompleteAQBuffer.pointee.mAudioData), "Couldnt read packet data, \(#file) \(#function) \(#line)")
         
+        
+        try SCoreAudioError.check(status: AudioFileReadPacketData(player.pointee.playbackFile!, false, &numBytes, player.pointee.packetDescs?.baseAddress, player.pointee.packetPosition, &nPackets, inCompleteAQBuffer.pointee.mAudioData), "Couldnt read packet data, \(#file) \(#function) \(#line)")
+        
+        player.pointee.packetPosition += Int64(nPackets) // If I delete this line, it will read the same packet over and over again
         // Enqueueing packets for Playback
         guard nPackets > 0 else{
             try SCoreAudioError.check(status: AudioQueueStop(inAQ, false), "`AudioQueueStop` failed, \(#file) \(#function) \(#line)")
@@ -34,7 +37,7 @@ private func myAQOutputCallback(inUserData:UnsafeMutableRawPointer?,inAQ: AudioQ
         }
         
         inCompleteAQBuffer.pointee.mAudioDataByteSize = numBytes
-        try SCoreAudioError.check(status: AudioQueueEnqueueBuffer(inAQ, inCompleteAQBuffer, player.pointee.packetDescs != nil ? nPackets : 0, &player.pointee.packetDescs![0]), "Couldn't enqueue new packet to the playback queue,  \(#file) \(#function) \(#line)")
+        try SCoreAudioError.check(status: AudioQueueEnqueueBuffer(inAQ, inCompleteAQBuffer, player.pointee.packetDescs != nil ? nPackets : 0, player.pointee.packetDescs?.baseAddress), "Couldn't enqueue new packet to the playback queue,  \(#file) \(#function) \(#line)")
         
     }catch{
         fatalError(error.localizedDescription)
@@ -57,7 +60,7 @@ struct BasicPlayback{
         var numPacketsToRead: UInt32 = 0
         var packetDescs: UnsafeMutableBufferPointer<AudioStreamPacketDescription>?
         var isDone: Bool = false
-        
+        var buffSize: UInt32 = 0
         deinit {
             
             guard let packetDescs = packetDescs else{
@@ -135,22 +138,21 @@ struct BasicPlayback{
             // Set up format
             
                 // Getting the ASBD from an Audio File
-            var dataFormat: AudioStreamBasicDescription?
+            var dataFormat = AudioStreamBasicDescription.init()
             var propSize: UInt32 = UInt32(MemoryLayout<AudioStreamBasicDescription>.size)
             try SCoreAudioError.check(status: AudioFileGetProperty(audioFileID!, kAudioFilePropertyDataFormat, &propSize, &dataFormat), "Couldn't get file's data format")
-
             // Set up queue
             
                 // Creating a new Audio Queue for output
             var queue: AudioQueueRef?
-            try SCoreAudioError.check(status: AudioQueueNewOutput(&dataFormat!, myAQOutputCallback, &player, nil, nil, 0, &queue),"`AudioQueueNewOutput` had an error")
+            try SCoreAudioError.check(status: AudioQueueNewOutput(&dataFormat, myAQOutputCallback, &player, nil, nil, 0, &queue),"`AudioQueueNewOutput` had an error")
             
                 // Calling a convenience function to calculate Palyback Buffer Size and Number of Packets to Read
             var bufferByteSize: UInt32 = 0
-            try calculateBytesForTime(fileID: player.playbackFile!, dataFormat: dataFormat!, time: 0.5, outBufferByteSize: &bufferByteSize, outNumPacketsToRead: &player.numPacketsToRead)
-            
+            try calculateBytesForTime(fileID: player.playbackFile!, dataFormat: dataFormat, time: 0.5, outBufferByteSize: &bufferByteSize, outNumPacketsToRead: &player.numPacketsToRead)
+            player.buffSize = bufferByteSize
                 //Allocating memory for Packet Descriptions Array
-            let isFormatVBR = dataFormat!.mBytesPerPacket == 0 || dataFormat!.mBytesPerFrame == 0
+            let isFormatVBR = dataFormat.mBytesPerPacket == 0 || dataFormat.mBytesPerFrame == 0
             
             if isFormatVBR{
                 player.packetDescs = UnsafeMutableBufferPointer<AudioStreamPacketDescription>.init(start: UnsafeMutablePointer<AudioStreamPacketDescription>.allocate(capacity: Int(player.numPacketsToRead)), count: Int(player.numPacketsToRead))

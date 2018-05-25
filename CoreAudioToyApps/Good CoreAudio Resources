@@ -1,4 +1,5 @@
 
+http://www.deluge.co/?q=core-midi-core-audio-useful-links
 http://flexmonkey.blogspot.com/2014/10/sound-synthesis-in-swift-core-audio.html
 http://www.cocoawithlove.com/2008/09/streaming-and-playing-live-mp3-stream.html
 https://developer.apple.com/library/content/documentation/MusicAudio/Conceptual/AudioUnitProgrammingGuide/AQuickTouroftheCoreAudioSDK/AQuickTouroftheCoreAudioSDK.html
@@ -6,4 +7,4 @@ https://developer.apple.com/library/content/samplecode/AudioDriverExamples/Intro
 https://github.com/Epskampie/ios-coreaudio-example
 https://github.com/neonichu/Core-Audio-Samples
 http://www.deluge.co/?q=content/simple-example-project-using-coremidi-and-coreaudio
-http://www.deluge.co/?q=core-midi-core-audio-useful-links
+https://github.com/ooper-shlab/AQOfflineRenderTest-Swift/blob/master/aqofflinerenderer.swift

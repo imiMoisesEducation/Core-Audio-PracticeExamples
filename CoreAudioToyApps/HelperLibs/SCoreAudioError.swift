@@ -66,6 +66,7 @@ enum SCoreAudioError:Error{
     case extAudioFile_MaxPacketSizeUnknown(message:String?)
     case extAudioFile_InvalidOperationOrder(message:String?)
     case extAudioFile_AsyncWriteBufferOverflow(message:String?)
+    case audio_ParamError(message:String?)
     case unknownError(message:String?)
     
     init?(status: OSStatus, message:String? = nil){
@@ -186,6 +187,8 @@ enum SCoreAudioError:Error{
             self = .extAudioFile_InvalidOperationOrder(message: message)
         case kExtAudioFileError_AsyncWriteBufferOverflow:
             self = .extAudioFile_AsyncWriteBufferOverflow(message: message)
+        case kAudio_ParamError:
+            self = .audio_ParamError(message: message)
         default:
             self = .unknownError(message: message)
         }
@@ -260,6 +263,7 @@ enum SCoreAudioError:Error{
                  .extAudioFile_MaxPacketSizeUnknown(let message),
                  .extAudioFile_InvalidOperationOrder(let message),
                  .extAudioFile_AsyncWriteBufferOverflow(let message),
+                 .audio_ParamError(let message),
                  .unknownError(let message):
                 return message
             }
@@ -360,6 +364,15 @@ enum SCoreAudioError:Error{
              .audioToolbox_StartOfTrack,
              .audioToolbox_TrackIndexError,
              .audioToolbox_TrackNotFound:
+            return true
+        default:
+            return false
+        }
+    }
+    
+    var isGeneralAudioError:Bool{
+        switch self {
+        case .audio_ParamError:
             return true
         default:
             return false
@@ -482,8 +495,10 @@ enum SCoreAudioError:Error{
                 error = "extAudioFile_InvalidOperationOrder"
             case .extAudioFile_AsyncWriteBufferOverflow:
                 error = "extAudioFile_AsyncWriteBufferOverflow"
+            case .audio_ParamError:
+                error = "audio_ParamError"
             case .unknownError:
-                error = "unknownError"
+                error = "unknownError, \(statusErr)"
             }
             return error.appending("\nNotes: \(String(describing: self.message))")
         }

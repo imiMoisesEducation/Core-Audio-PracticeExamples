@@ -97,7 +97,7 @@ struct BasicPlayback{
         }
         outNumPacketsToRead = outBufferByteSize / maxPacketSize
     }
-    
+     
     // Copying magic cookie from Audio File to Audio Queue
     func myCopyEncodedCookieToQueue(fileID: AudioFileID, queue: AudioQueueRef) throws{
         var propertySize: UInt32 = 0

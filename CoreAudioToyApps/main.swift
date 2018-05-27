@@ -21,6 +21,8 @@ case "basicRecorder":
 case "basicPlayback":
     app = BasicPlayback()
     break
+case "lowFileConverter":
+    app = FileConverterLowestLevel()
 default:
     break
 }

@@ -109,15 +109,17 @@ struct BasicRecorder{
         
         guard propertySize > 0 else{ throw NSError.init(domain: "BasicRecorder", code: 0, userInfo: [NSLocalizedDescriptionKey : "Magic cookie couldnt be found"])}
         
-        var magicCookie = ContiguousArray<UInt8>.init(repeating: 0, count: Int(propertySize))
-        
+        let size = Int(propertySize)
+        let magicCookie = UnsafeMutablePointer<UInt8>.allocate(capacity: size)
         try SCoreAudioError.check(status:
-            AudioQueueGetProperty(queue!, kAudioQueueProperty_MagicCookie, &magicCookie[0], &propertySize)
+            AudioQueueGetProperty(queue!, kAudioQueueProperty_MagicCookie, magicCookie, &propertySize)
         )
         
         try SCoreAudioError.check(status:
-            AudioFileSetProperty(theFile!, kAudioFilePropertyMagicCookieData, propertySize, &magicCookie[0])
+            AudioFileSetProperty(theFile!, kAudioFilePropertyMagicCookieData, propertySize, magicCookie)
         )
+        magicCookie.deinitialize(count: size)
+        magicCookie.deallocate(capacity: size)
     }
     
     private func myComputeRecordBufferSize(format: inout AudioStreamBasicDescription, queue: AudioQueueRef,seconds:Float64) throws -> UInt32{

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		ED45B6AB20AE965E00FBA84E /* ScaleMakerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED45B6AA20AE965E00FBA84E /* ScaleMakerApp.swift */; };
 		ED45B6AD20AE9A6F00FBA84E /* TypeDescriptorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED45B6AC20AE9A6F00FBA84E /* TypeDescriptorApp.swift */; };
+		ED45FF7A20BA2880009D1737 /* FileConverterLowestLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED45FF7920BA2880009D1737 /* FileConverterLowestLevel.swift */; };
 		ED6A981020AD454300CD227E /* SCoreAudioError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6A980F20AD454300CD227E /* SCoreAudioError.swift */; };
 		ED72032020B0C1E6006070A9 /* BasicPlayback.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED72031F20B0C1E6006070A9 /* BasicPlayback.swift */; };
 		ED72032220B0CB50006070A9 /* BasicRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED72032120B0CB50006070A9 /* BasicRecorder.swift */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		ED45B6AA20AE965E00FBA84E /* ScaleMakerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleMakerApp.swift; sourceTree = "<group>"; };
 		ED45B6AC20AE9A6F00FBA84E /* TypeDescriptorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeDescriptorApp.swift; sourceTree = "<group>"; };
+		ED45FF7920BA2880009D1737 /* FileConverterLowestLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileConverterLowestLevel.swift; sourceTree = "<group>"; };
 		ED5C9BF420B679C60004CE30 /* Good CoreAudio Resources */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Good CoreAudio Resources"; sourceTree = "<group>"; };
 		ED6A980F20AD454300CD227E /* SCoreAudioError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCoreAudioError.swift; sourceTree = "<group>"; };
 		ED72031F20B0C1E6006070A9 /* BasicPlayback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicPlayback.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				ED45B6AA20AE965E00FBA84E /* ScaleMakerApp.swift */,
 				ED72031F20B0C1E6006070A9 /* BasicPlayback.swift */,
 				ED72032120B0CB50006070A9 /* BasicRecorder.swift */,
+				ED45FF7920BA2880009D1737 /* FileConverterLowestLevel.swift */,
 			);
 			path = Applications;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 				EDD321B420A7E8DA0038F518 /* ScaleMaker.swift in Sources */,
 				ED45B6AB20AE965E00FBA84E /* ScaleMakerApp.swift in Sources */,
 				EDD321B220A7E7920038F518 /* NotesGenerator.swift in Sources */,
+				ED45FF7A20BA2880009D1737 /* FileConverterLowestLevel.swift in Sources */,
 				ED72032020B0C1E6006070A9 /* BasicPlayback.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
